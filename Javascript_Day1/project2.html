@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- You are designing a simple calculator for a small grocery shop. The shop sells three items: rice, sugar, and wheat.
 Your task is to:
 Create variables for the item names, prices, and quantities purchased.
@@ -44,3 +45,51 @@ Use only what you’ve learned today, and make sure to follow variable naming ru
     </script>
 </body>
 </html>
+=======
+<!-- You are designing a simple calculator for a small grocery shop. The shop sells three items: rice, sugar, and wheat.
+Your task is to:
+Create variables for the item names, prices, and quantities purchased.
+Calculate and display the cost for each item (price × quantity).
+Calculate the total bill for the customer.
+Change the quantity of one item and recalculate the total.
+Display the updated total bill.
+Use only what you’ve learned today, and make sure to follow variable naming rules. Output all the values using console.log(). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Calculator</title>
+</head>
+<body>
+    <script>
+        var ricePrice = 50;
+        var wheatPrice = 60;
+        var sugarPrice = 70;
+
+        var riceQuan = 3;
+        var wheatQuan = 5;
+        var sugarQuan = 7;
+
+        var riceCost = ricePrice * riceQuan;
+        var wheatCost = wheatPrice * wheatQuan;
+        var sugarCost = sugarPrice * sugarQuan;
+
+        console.log("Rice Cost: ₹" + riceCost);
+        console.log("Wheat Cost: ₹" + wheatCost);
+        console.log("Sugar Cost: ₹" + sugarCost);
+
+        
+        var totalBill = riceCost + wheatCost + sugarCost;
+        console.log("Total Bill: ₹" + totalBill);
+
+        riceQuan = 10; 
+        riceCost = ricePrice * riceQuan;
+        totalBill = riceCost + wheatCost + sugarCost;
+
+        console.log("Updated Rice Cost: ₹" + riceCost);
+        console.log("Updated Total Bill: ₹" + totalBill);
+    </script>
+</body>
+</html>
+>>>>>>> 67109f2adb70779592540d2a367e9edcb649e3aa
