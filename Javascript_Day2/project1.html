@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+<body>
+    <h1>Library</h1>
+
+    <script>
+        // Book object
+        let book = {
+            title: "Wings of Fire",
+            author: "APJ Abdul Kalam",
+            year: 1999,
+            getSummary: function() {
+                return "The book '" + this.title + "' was written by " + this.author + " in " + this.year + ".";
+
+            }
+        };
+
+        function printBookSummary(book) {
+            document.write(book.getSummary());
+        }
+
+        // Call the function
+        printBookSummary(book);
+    </script>
+</body>
+</html>
