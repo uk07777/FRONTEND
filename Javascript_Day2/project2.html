@@ -1,0 +1,45 @@
+<!-- You are building a simple contact manager app. Each contact has a name, phone number, and email address. You want to group contacts as objects and add a method that shows the contact's full information in a neat format.
+Your tasks are:
+Create an object called contact1 with the following properties: name, phone, and email.
+Add a method getInfo inside the object that returns a single string combining all the contact details.
+Create a function printContactInfo(contact) that takes a contact object as a parameter and prints its getInfo() result.
+Create another contact called contact2 using the same structure.
+Call the printContactInfo() function for both contacts.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let contact1={
+            name:"Ujjual",
+            phone_number:"6238439494",
+            email_address:"ujjualkrishna159gmail.com",
+            getInfo:function(){
+                return "The name of th person is  "+this.name+" "+"The phone number of the person is " +this.phone_number+ " "+"the email address of the person is "+this.email_address
+            }
+         };
+         let contact2={
+            name:"krishna",
+            phone_number:"6238439495",
+            email_address:"krishna159gmail.com",
+            getInfo:function(){
+                return "The name of th person is  "+this.name+" "+"The phone number of the person is " +this.phone_number+ " "+"the email address of the person is "+this.email_address
+            }
+         };
+        function printContactInfo() {
+            document.write(contact1.getInfo()+"<br><br>");
+            document.write(contact2.getInfo()+"<br><br>");
+        }
+
+        // Call the function
+        printContactInfo()
+        
+        
+           </script>
+</body>
+</html>
