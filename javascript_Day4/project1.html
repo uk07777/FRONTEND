@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Statistics Widget</title>
+</head>
+<body>
+
+<h2>Statistics Widget</h2>
+<div id="output"></div>
+
+<script>
+  // 1. Generate a random whole number between 1 and 100
+  let randomNum = Math.floor(Math.random() * 100) + 1;
+
+  // 2. Simulate a user score as a string value
+  let userScoreStr = "75";
+
+  // 3. Convert user score string to a number (explicit conversion)
+  let userScore = Number(userScoreStr);
+
+  // 4. Show the difference between random number and user score
+  let difference = randomNum - userScore;
+
+  // 5. Show the rounded square root of the user score
+  let sqrtRounded = Math.round(Math.sqrt(userScore));
+
+  // 6. Show the π constant
+  let piValue = Math.PI;
+
+  // 7. Convert string "50" to number using implicit conversion and multiply by 2
+  let implicitConversion = "50" * 2;   // JS automatically converts string to number
+
+  // Display results
+  document.getElementById("output").innerHTML = `
+    <p>Random Number (1-100): ${randomNum}</p>
+    <p>User Score (string): "${userScoreStr}" → Converted: ${userScore}</p>
+    <p>Difference (Random - User Score): ${difference}</p>
+    <p>Rounded √User Score: ${sqrtRounded}</p>
+    <p>π Constant: ${piValue}</p>
+    <p>"50" * 2 = ${implicitConversion}</p>
+  `;
+</script>
+
+</body>
+</html>
