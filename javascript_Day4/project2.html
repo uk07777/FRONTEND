@@ -1,0 +1,59 @@
+<!-- You are creating a simple game result generator for a beginner-level web game.
+Create a script that:
+Randomly picks a number between 1 and 50 (representing a mystery level).
+Takes a user input score (as a string, e.g., "45") and converts it into a number.
+Shows the absolute difference between the mystery level and the user's score.
+Calculates and logs the square root of the user’s score.
+Logs the value of Pi (?) using a math property.
+Uses implicit conversion to multiply the string "20" by 5.
+Uses the Math.max() and Math.min() methods to display the highest and lowest values among 10, 20, and the mystery level. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Result Generator</title>
+</head>
+<body>
+
+<h2>Game Result Generator</h2>
+<div id="results"></div>
+
+<script>
+  // 1. Randomly pick a number between 1 and 50 (mystery level)
+  let mysteryLevel = Math.floor(Math.random() * 50) + 1;
+
+  // 2. Take a user input score (as string) and convert to number
+  let userScoreStr = "45"; 
+  let userScore = Number(userScoreStr);
+
+  // 3. Show absolute difference
+  let difference = Math.abs(mysteryLevel - userScore);
+
+  // 4. Square root of user’s score
+  let sqrtScore = Math.sqrt(userScore);
+
+  // 5. Value of Pi
+  let piValue = Math.PI;
+
+  // 6. Implicit conversion: "20" * 5
+  let implicitMultiply = "20" * 5;
+
+  // 7. Math.max() and Math.min() among 10, 20, and mystery level
+  let highest = Math.max(10, 20, mysteryLevel);
+  let lowest = Math.min(10, 20, mysteryLevel);
+
+  // Display results in the browser
+  document.getElementById("results").innerHTML = `
+    <p>Mystery Level (1-50): ${mysteryLevel}</p>
+    <p>User Score (string): "${userScoreStr}" → Converted: ${userScore}</p>
+    <p>Absolute Difference: ${difference}</p>
+    <p>Square Root of User Score: ${sqrtScore.toFixed(2)}</p>
+    <p>Value of π: ${piValue}</p>
+    <p>"20" * 5 = ${implicitMultiply}</p>
+    <p>Highest of (10, 20, mysteryLevel): ${highest}</p>
+    <p>Lowest of (10, 20, mysteryLevel): ${lowest}</p>
+  `;
+</script>
+
+</body>
+</html>
