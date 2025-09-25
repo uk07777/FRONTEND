@@ -1,0 +1,58 @@
+<!-- You are helping design a simple product listing feature for an online grocery store. You have an array of product names and an array of their prices. Your tasks are:
+
+Merge the product names and prices into one array in the format: "Product: Apple - Price: 50"
+
+Display all product entries using a loop.
+
+Filter and show only the products with prices greater than 50.
+
+Add a new product "Watermelon" with price 80 to the list, and then display the updated product list.
+ -->
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Product Listing</h2>
+<pre id="output"></pre>
+
+<script>
+var products = ["Apple", "Orange", "Banana", "Carrot"];
+var prices = [30, 20, 60, 40];
+
+// 1️⃣ Merge product names and prices into one array
+var merged = products.map((p, i) => "Product: " + p + " - Price: " + prices[i]);
+
+// 2️⃣ Display all product entries
+var output = "All Products:\n";
+for (var i = 0; i < merged.length; i++) {
+    output += merged[i] + "\n";
+}
+
+// 3️⃣ Filter and show only products with price > 50
+var filtered = products
+    .map((p, i) => ({ product: p, price: prices[i] }))
+    .filter(item => item.price > 50)
+    .map(item => "Product: " + item.product + " - Price: " + item.price);
+
+output += "\nProducts with Price > 50:\n";
+for (var i = 0; i < filtered.length; i++) {
+    output += filtered[i] + "\n";
+}
+
+// 4️⃣ Add new product "Watermelon" with price 80
+products.push("Watermelon");
+prices.push(80);
+
+// Update merged after adding new product
+var updated = products.map((p, i) => "Product: " + p + " - Price: " + prices[i]);
+
+output += "\nUpdated Product List:\n";
+for (var i = 0; i < updated.length; i++) {
+    output += updated[i] + "\n";
+}
+
+document.getElementById("output").textContent = output;
+</script>
+
+</body>
+</html>
