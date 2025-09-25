@@ -1,0 +1,50 @@
+<!-- Imagine you're building a basic profile page for a user on a small website. Create a script that:
+Stores the user's name, age, and whether they are an admin using variables.
+Checks whether the user is old enough to access admin features (age should be 18 or more and user must be admin).
+Use the conditional ? : operator to display either "Access Granted" or "Access Denied" based on the condition.
+Display the result only when a button is clicked.
+Also check if the "age" property exists in the user object using the "in" operator.
+Delete the "age" property after the check using the delete operator -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile Check</title>
+</head>
+<body>
+  <h2>User Profile</h2>
+  <p id="userInfo"></p>
+  <button onclick="checkAccess()">Check Access</button>
+  <p id="result"></p>
+  <p id="ageCheck"></p>
+
+  <script>
+    // Create user object
+    let user = {
+      name: "John Doe",
+      age: 20,
+      isAdmin: true
+    };
+
+    // Display initial user info
+    document.getElementById("userInfo").innerHTML = 
+      `Name: ${user.name}, Age: ${user.age}, Admin: ${user.isAdmin}`;
+
+    function checkAccess() {
+      // Check if 'age' property exists
+      let ageExists = "age" in user;
+      document.getElementById("ageCheck").innerHTML = 
+        ageExists ? "Age property exists " : "Age property does not exist ";
+
+      // Conditional access check (ternary operator)
+      let access = (user.age >= 18 && user.isAdmin) ? "Access Granted" : "Access Denied";
+      document.getElementById("result").innerHTML = access;
+
+      // Delete age property after checking
+      delete user.age;
+      console.log("After delete:", user);
+    }
+  </script>
+</body>
+</html>
