@@ -1,0 +1,61 @@
+ <!-- You are building a simple birthday tracker for your friends. You need to:
+Create an object named friend with properties: name and birthDate (in the format YYYY-MM-DD).
+
+Write a function getBirthdayDetails that:
+    Accepts the friend object as input,
+    onverts the birthDate string into a date,
+    Extracts and prints the year, month name, and day of the month,
+    Calculates how many years old the friend is as of today.
+Display the result in the format:
+ "John was born on 5 July, 1999 and is 25 years old."
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Birthday Tracker</title>
+</head>
+<body>
+
+<h2>Birthday Tracker</h2>
+<p id="result"></p>
+
+<script>
+  // 1️⃣ Create an object named friend
+  const friend = {
+    name: "John",
+    birthDate: "1999-07-05"
+  };
+
+  // 2️⃣ Function to get birthday details
+  function getBirthdayDetails(friend) {
+    const birth = new Date(friend.birthDate);
+
+    // Extract parts of the date
+    const year = birth.getFullYear();
+    const day = birth.getDate();
+    const monthName = birth.toLocaleString('default', { month: 'long' });
+
+    // Calculate age
+    const today = new Date();
+    let age = today.getFullYear() - year;
+
+    // Adjust if birthday hasn't occurred yet this year
+    const hasHadBirthday =
+      today.getMonth() > birth.getMonth() ||
+      (today.getMonth() === birth.getMonth() && today.getDate() >= day);
+
+    if (!hasHadBirthday) {
+      age--;
+    }
+
+    // Display result
+    const result = `${friend.name} was born on ${day} ${monthName}, ${year} and is ${age} years old.`;
+    document.getElementById("result").innerText = result;
+  }
+
+  // Call the function
+  getBirthdayDetails(friend);
+</script>
+
+</body>
+</html>
