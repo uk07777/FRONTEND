@@ -1,0 +1,40 @@
+<!-- You received user feedback from a contact form in a JSON format. Your task is to:
+Convert the JSON string into a usable format.
+Use a named arrow function to check if the feedback contains the word "thank" (in any case like "Thank", "THANK", etc.).
+If the word is found, show a message "Positive feedback received".
+If the word is not found, show "Feedback noted".
+Use try-catch to handle any error if the JSON is invalid.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feedback Checker</title>
+</head>
+<body>
+  <h2>User Feedback Checker</h2>
+  <textarea id="jsonInput" rows="4" cols="60">
+{"name": "Rina", "email": "rina@example.com", "feedback": "Thank you for your help!"}
+  </textarea><br>
+  <button onclick="checkFeedback()">Check Feedback</button>
+
+  <h3>Result:</h3>
+  <div id="result"></div>
+
+  <script>
+    const checkFeedback = () => {
+      const input = document.getElementById('jsonInput').value;
+      try {
+        const data = JSON.parse(input);
+        // Check for "thank" case-insensitive in feedback
+        if (/thank/i.test(data.feedback)) {
+          document.getElementById('result').textContent = "Positive feedback received";
+        } else {
+          document.getElementById('result').textContent = "Feedback noted";
+        }
+      } catch (error) {
+        document.getElementById('result').textContent = "Error: Invalid JSON data.";
+      }
+    }
+  </script>
+</body>
+</html>
