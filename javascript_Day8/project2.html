@@ -1,0 +1,58 @@
+<!-- You are building a simple input system for a small game. The game gives players 5 chances to guess a number between 1 and 5. The game should work like this:
+Ask the player to enter a number between 1 and 5.
+If the number is 3, display: "You guessed it right!" and stop the game.
+If the number is not 3, display: "Wrong guess. Try again."
+If the player enters a number outside the range (not 1 to 5), display "Invalid input" and skip that chance using continue.
+If the player doesn’t guess the correct number within 5 valid chances, display "Game over".
+You must use:
+A loop
+An if-else statement
+A break statement
+A continue statement
+A switch to display the number they entered in words (e.g., 1 = "One") -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guessing Game</title>
+</head>
+<body>
+  <h2>Number Guessing Game (1 to 5)</h2>
+  <div id="gameResult"></div>
+  <script>
+    let chances = 0;
+    let output = "";
+    const numToWord = (num) => {
+      let word = "";
+      switch(num) {
+        case 1: word = "One"; break;
+        case 2: word = "Two"; break;
+        case 3: word = "Three"; break;
+        case 4: word = "Four"; break;
+        case 5: word = "Five"; break;
+        default: word = "Unknown"; break;
+      }
+      return word;
+    };
+
+    while (chances < 5) {
+      let guess = parseInt(prompt("Enter a number between 1 and 5:"));
+      if (guess < 1 || guess > 5 || isNaN(guess)) {
+        output += "Invalid input<br>";
+        continue;
+      }
+      output += `You entered: <b>${numToWord(guess)}</b><br>`;
+      if (guess === 3) {
+        output += "You guessed it right!";
+        break;
+      } else {
+        output += "Wrong guess. Try again.<br>";
+      }
+      chances++;
+    }
+    if (chances === 5) {
+      output += "Game over";
+    }
+    document.getElementById("gameResult").innerHTML = output;
+  </script>
+</body>
+</html>
