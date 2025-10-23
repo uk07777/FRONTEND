@@ -1,0 +1,74 @@
+<!-- You are building a basic user system. Each user has a name, age, and email. Your task is to:
+Create a User class that stores these values.
+Use getter methods to access name and age.
+Use a setter method to safely update the email (only allow setting if the email contains an @ symbol).
+Use the this keyword correctly in all functions.
+Create an object from the class, try updating the email using both a correct and incorrect format,
+and print out all the user details using getter methods.-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Info System</title>
+</head>
+<body>
+  <h2>User System</h2>
+  <div>
+    <label>Name: <input id="userName" value="Sneha"></label><br>
+    <label>Age: <input id="userAge" type="number" value="25"></label><br>
+    <label>Email: <input id="userEmail" value="sneha@sample.com"></label><br>
+    <button onclick="createUser()">Create User</button>
+  </div>
+  <hr>
+  <div>
+    <label>Update Email: <input id="updateEmail"></label>
+    <button onclick="updateEmail()">Update Email</button>
+  </div>
+  <h3>User Details</h3>
+  <pre id="userDetails"></pre>
+  <pre id="message"></pre>
+
+  <script>
+    class User {
+      constructor(name, age, email) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+      }
+      getName() { return this.name; }
+      getAge() { return this.age; }
+      setEmail(newEmail) {
+        if (typeof newEmail === "string" && newEmail.includes("@")) {
+          this.email = newEmail;
+          document.getElementById('message').textContent = "Email updated!";
+        } else {
+          document.getElementById('message').textContent = "Invalid email: must contain '@'";
+        }
+      }
+      details() {
+        return `Name: ${this.getName()}\nAge: ${this.getAge()}\nEmail: ${this.email}`;
+      }
+    }
+
+    let myUser = null;
+    function createUser() {
+      const name = document.getElementById('userName').value;
+      const age = Number(document.getElementById('userAge').value);
+      const email = document.getElementById('userEmail').value;
+      myUser = new User(name, age, email);
+      document.getElementById('userDetails').textContent = myUser.details();
+      document.getElementById('message').textContent = "User created!";
+    }
+
+    function updateEmail() {
+      if (!myUser) {
+        document.getElementById('message').textContent = "Please create a user first.";
+        return;
+      }
+      const newEmail = document.getElementById('updateEmail').value;
+      myUser.setEmail(newEmail);
+      document.getElementById('userDetails').textContent = myUser.details();
+    }
+  </script>
+</body>
+</html>
+
