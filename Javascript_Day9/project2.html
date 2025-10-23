@@ -1,0 +1,50 @@
+<!-- You are creating a simple comment filtering system for a blog site. You need to write a JavaScript function that takes a user's comment and performs the following:
+Check whether the comment contains any of the following banned words: "bad", "ugly", or "stupid" (case-insensitive).
+If it contains a banned word, replace it with "***" using a regular expression.
+Count how many numbers are mentioned in the comment.
+Count how many words in the comment begin with a capital letter.
+Return a final message with the cleaned comment, number count, and capitalized word count.
+Test the function with this comment:
+ "I think this movie was BAD and 100% Stupid! But the Acting was Amazing and 3 actors were great.
+ -->
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Comment Filter</title>
+</head>
+<body>
+  <h2>Blog Comment Filtering System</h2>
+  <textarea id="commentInput" rows="4" cols="70">
+I think this movie was BAD and 100% Stupid! But the Acting was Amazing and 3 actors were great.
+  </textarea><br>
+  <button onclick="filterComment()">Filter Comment</button>
+
+  <h3>Results:</h3>
+  <div id="result"></div>
+
+  <script>
+    function filterComment() {
+      let comment = document.getElementById('commentInput').value;
+
+      // Replace banned words (case-insensitive, whole words)
+      let cleanedComment = comment.replace(/\b(bad|ugly|stupid)\b/gi, "***");
+
+      // Count numbers (consecutive digits)
+      let numberMatches = cleanedComment.match(/\d+/g);
+      let numberCount = numberMatches ? numberMatches.length : 0;
+
+      // Count capital-starting words
+      let capitalWords = cleanedComment.match(/\b[A-Z][a-zA-Z]*\b/g);
+      let capitalWordCount = capitalWords ? capitalWords.length : 0;
+
+      let message =
+        "<b>Cleaned comment:</b> " + cleanedComment + "<br>" +
+        "<b>Numbers found:</b> " + numberCount + "<br>" +
+        "<b>Capitalized words:</b> " + capitalWordCount;
+
+      document.getElementById('result').innerHTML = message;
+    }
+  </script>
+</body>
+</html>
+
