@@ -1,0 +1,76 @@
+<!-- Create a simple feedback web page that includes:
+A form with:
+    A text input for the user's name
+    A textarea for their feedback
+A submit button
+   When the form is submitted:
+   The input values (name and feedback) should display on the same page without refreshing.
+   A confirmation message (e.g., “Thanks for your feedback!”) should be shown in green.
+   After 5 seconds, the confirmation message should disappear automatically.
+When the mouse hovers over the feedback display, the text should turn blue. 
+When the mouse leaves, it should return to black. -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feedback Form</title>
+  <style>
+    #confirmation {
+      color: green;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    #feedbackDisplay {
+      margin-top: 15px;
+      color: black;
+      border: 1px solid #ccc;
+      padding: 10px;
+      max-width: 400px;
+      min-height: 40px;
+      transition: color 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <h2>Feedback Form</h2>
+  <form id="feedbackForm">
+    <label>Name: <input type="text" id="nameInput" required></label><br><br>
+    <label>Feedback:<br><textarea id="feedbackInput" rows="4" cols="40" required></textarea></label><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="confirmation" style="display:none;"></div>
+  <div id="feedbackDisplay"></div>
+
+  <script>
+    const feedbackForm = document.getElementById('feedbackForm');
+    const confirmation = document.getElementById('confirmation');
+    const feedbackDisplay = document.getElementById('feedbackDisplay');
+    let timer = null;
+
+    feedbackForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent page refresh
+
+      const name = document.getElementById('nameInput').value;
+      const feedback = document.getElementById('feedbackInput').value;
+      feedbackDisplay.innerHTML = `<b>Name:</b> ${name}<br><b>Feedback:</b> ${feedback}`;
+
+      confirmation.textContent = "Thanks for your feedback!";
+      confirmation.style.display = "block";
+
+      // Remove confirmation after 5 seconds
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        confirmation.style.display = "none";
+      }, 5000);
+    });
+
+    feedbackDisplay.addEventListener('mouseover', function() {
+      feedbackDisplay.style.color = "blue";
+    });
+
+    feedbackDisplay.addEventListener('mouseout', function() {
+      feedbackDisplay.style.color = "black";
+    });
+  </script>
+</body>
+</html>
