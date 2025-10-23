@@ -1,0 +1,36 @@
+<!-- You have some information from a user in JSON format, including their name, email, and message. Your job is to:
+Convert this JSON text into a JavaScript object.
+Write a named arrow function that tries to print "Message received from <name>".
+If something goes wrong (like the JSON is broken), show an error message.
+Run the function to show the result in the console. -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON Message Reader</title>
+</head>
+<body>
+  <h2>JSON Message Reader</h2>
+  <textarea id="jsonInput" rows="4" cols="60">
+{"name": "Aarav", "email": "aarav@example.com", "message": "Hello!"}
+  </textarea><br>
+  <button onclick="printMessage()">Check Message</button>
+
+  <h3>Output:</h3>
+  <pre id="result"></pre>
+
+  <script>
+    // Named arrow function
+    const printMessage = () => {
+      const input = document.getElementById('jsonInput').value;
+      try {
+        const user = JSON.parse(input);
+        document.getElementById('result').textContent = `Message received from ${user.name}`;
+        console.log(`Message received from ${user.name}`);
+      } catch (error) {
+        document.getElementById('result').textContent = "Error: Invalid JSON data.";
+        console.error("Error: Invalid JSON data.");
+      }
+    };
+  </script>
+</body>
+</html>
