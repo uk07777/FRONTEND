@@ -1,0 +1,70 @@
+<!-- Create a system that stores information about books. Each book has a title, author, and price. Your task is to:
+Create a class named Book.
+Use a constructor to initialize the book title, author, and price.
+Use getter methods to return the book title and author.
+Use a setter method to update the book price only if it is a number and greater than 0.
+Create one object of the Book class, try updating the price using both valid and invalid values, and print the final book details.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Information System</title>
+</head>
+<body>
+  <h2>Book Information Entry</h2>
+  <label>Title: <input id="bookTitle" value="Atomic Habits"></label><br>
+  <label>Author: <input id="bookAuthor" value="James Clear"></label><br>
+  <label>Initial Price: <input id="bookPrice" type="number" value="599"></label><br>
+  <button onclick="createBook()">Create Book</button>
+  <hr>
+  <label>Update Price: <input id="updatePrice"></label>
+  <button onclick="updatePrice()">Update Price</button>
+  <h3>Book Details</h3>
+  <pre id="bookDetails"></pre>
+  <pre id="message"></pre>
+
+  <script>
+    class Book {
+      constructor(title, author, price) {
+        this._title = title;
+        this._author = author;
+        this._price = price;
+      }
+      getTitle() { return this._title; }
+      getAuthor() { return this._author; }
+      setPrice(newPrice) {
+        if (typeof newPrice === "number" && newPrice > 0) {
+          this._price = newPrice;
+          document.getElementById('message').textContent = "Price updated successfully!";
+        } else {
+          document.getElementById('message').textContent = "Invalid price! Price must be a number greater than 0.";
+        }
+      }
+      details() {
+        return `Title: ${this._title}\nAuthor: ${this._author}\nPrice: ₹${this._price}`;
+      }
+    }
+
+    let myBook = null;
+    function createBook() {
+      const title = document.getElementById('bookTitle').value;
+      const author = document.getElementById('bookAuthor').value;
+      const price = Number(document.getElementById('bookPrice').value);
+      myBook = new Book(title, author, price);
+      document.getElementById('bookDetails').textContent = myBook.details();
+      document.getElementById('message').textContent = "Book created!";
+    }
+
+    function updatePrice() {
+      if (!myBook) {
+        document.getElementById('message').textContent = "Please create a book first.";
+        return;
+      }
+      const priceInput = document.getElementById('updatePrice').value;
+      const newPrice = Number(priceInput);
+      myBook.setPrice(newPrice);
+      document.getElementById('bookDetails').textContent = myBook.details();
+    }
+  </script>
+</body>
+</html>
